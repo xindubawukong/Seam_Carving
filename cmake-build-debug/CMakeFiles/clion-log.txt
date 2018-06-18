@@ -1,0 +1,4 @@
+/Applications/CLion.app/Contents/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/xindubawukong/Desktop/thu_22/计算机图形学基础/zuoye3/Seam_Carving
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/xindubawukong/Desktop/thu_22/计算机图形学基础/zuoye3/Seam_Carving/cmake-build-debug

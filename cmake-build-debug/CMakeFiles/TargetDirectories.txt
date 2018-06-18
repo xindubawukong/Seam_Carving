@@ -1,0 +1,3 @@
+/Users/xindubawukong/Desktop/thu_22/计算机图形学基础/zuoye3/Seam_Carving/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/xindubawukong/Desktop/thu_22/计算机图形学基础/zuoye3/Seam_Carving/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/xindubawukong/Desktop/thu_22/计算机图形学基础/zuoye3/Seam_Carving/cmake-build-debug/CMakeFiles/Seam_Carving.dir
