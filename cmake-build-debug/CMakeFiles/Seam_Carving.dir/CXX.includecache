@@ -6,11 +6,19 @@
 
 #IncludeRegexTransform: 
 
+/Users/xindubawukong/Desktop/thu_22/计算机图形学基础/zuoye3/Seam_Carving/SeamCarver.cpp
+SeamCarver.h
+/Users/xindubawukong/Desktop/thu_22/计算机图形学基础/zuoye3/Seam_Carving/SeamCarver.h
+
+/Users/xindubawukong/Desktop/thu_22/计算机图形学基础/zuoye3/Seam_Carving/SeamCarver.h
+opencv2/opencv.hpp
+-
+
 /Users/xindubawukong/Desktop/thu_22/计算机图形学基础/zuoye3/Seam_Carving/main.cpp
 iostream
 -
-opencv2/opencv.hpp
--
+SeamCarver.h
+/Users/xindubawukong/Desktop/thu_22/计算机图形学基础/zuoye3/Seam_Carving/SeamCarver.h
 
 /usr/local/include/boost/assert.hpp
 boost/config.hpp
