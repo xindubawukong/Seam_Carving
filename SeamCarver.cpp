@@ -5,7 +5,7 @@
 
 
 
-#define inf 1e30
+#define inf 999999999
 
 
 
@@ -29,45 +29,17 @@ SeamCarver::~SeamCarver() {
 
 
 void SeamCarver::compute_energy() {
-    E=Mat(img.rows,img.cols,CV_32S);
-//    for (int i=1;i<img.rows-1;i++)
-//        for (int j=1;j<img.cols-1;j++) {
-//            Vec3b l=img.at<Vec3b>(i,j-1);
-//            Vec3b r=img.at<Vec3b>(i,j+1);
-//            Vec3b u=img.at<Vec3b>(i-1,j);
-//            Vec3b d=img.at<Vec3b>(i+1,j);
-//            int res=0;
-//            for (int k=0;k<3;k++) {
-//                res+=(l[k]-r[k])*(l[k]-r[k]);
-//                res+=(u[k]-d[k])*(u[k]-d[k]);
-//            }
-//            E.at<int>(i,j)=res;
-//        }
-    for (int i = 1; i < img.rows-1; ++i) {
-        uchar* prev = img.ptr<uchar>(i-1);	//Pointer to previous row
-        uchar* curr = img.ptr<uchar>(i);		//Pointer to current row
-        uchar* next = img.ptr<uchar>(i+1);	//Pointer to next row
-
-        for (int j = 1; j < img.cols-1; ++j) {
-            int val = 0;
-            //Energy along the x-axis
-            val += (prev[3*j]-curr[3*j]) * (prev[3*j]-curr[3*j]);
-            val += (next[3*j]-curr[3*j]) * (next[3*j]-curr[3*j]);
-            val += (prev[3*j+1]-curr[3*j+1]) * (prev[3*j+1]-curr[3*j+1]);
-            val += (next[3*j+1]-curr[3*j+1]) * (next[3*j+1]-curr[3*j+1]);
-            val += (prev[3*j+2]-curr[3*j+2]) * (prev[3*j+2]-curr[3*j+2]);
-            val += (next[3*j+2]-curr[3*j+2]) * (next[3*j+2]-curr[3*j+2]);
-
-            //Energy along the y-axis
-            val += (curr[3*j+3]-curr[3*j]) * (curr[3*j+3]-curr[3*j]);
-            val += (curr[3*j]-curr[3*j-3]) * (curr[3*j]-curr[3*j-3]);
-            val += (curr[3*j+4]-curr[3*j+1]) * (curr[3*j+4]-curr[3*j+1]);
-            val += (curr[3*j+1]-curr[3*j-2]) * (curr[3*j+1]-curr[3*j-2]);
-            val += (curr[3*j+5]-curr[3*j+2]) * (curr[3*j+5]-curr[3*j+2]);
-            val += (curr[3*j+2]-curr[3*j-1]) * (curr[3*j+2]-curr[3*j-1]);
-            E.at<int>(i, j) = val;
-        }
-    }
+    Mat img_gray;
+    cvtColor(img,img_gray,CV_BGR2GRAY);
+    Mat E1,E2;
+    Sobel(img_gray,E1,-1,0,1);
+    Sobel(img_gray,E2,-1,1,0);
+    E=Mat(img.rows,img.cols,CV_8U);
+    for (int i=0;i<img.rows;i++)
+        for (int j=0;j<img.cols;j++)
+            E.at<uchar>(i,j)=((int)E1.at<uchar>(i,j)+(int)E2.at<uchar>(i,j))/2;
+    E1.release();
+    E2.release();
 }
 
 
@@ -92,8 +64,7 @@ vector<int> SeamCarver::get_vertical_seam() {
                 from[i+1][j+1]=j;
             }
         }
-    double minf=inf;
-    int minj=0;
+    int minf=inf,minj=0;
     for (int j=1;j<img.cols-1;j++)
         if (f[img.rows-1][j]<minf) {
             minf=f[img.rows-1][j];

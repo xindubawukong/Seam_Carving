@@ -20,7 +20,7 @@ private:
     Mat img,img0;
     Mat E;
     pair<int,int> record[5000][5000];
-    double f[5000][5000];
+    int f[5000][5000];
     int from[5000][5000];
 
 public:
@@ -28,7 +28,7 @@ public:
     SeamCarver(Mat _img);
     ~SeamCarver();
 
-    int getE(int i,int j) {return E.at<int>(i,j);}
+    int getE(int i,int j) {return E.at<uchar>(i,j);}
 
     void compute_energy();
 

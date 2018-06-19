@@ -20,18 +20,12 @@ int main() {
 
     SeamCarver* seam_carver=new SeamCarver(img);
     //seam_carver->show_image("original image");
-    //seam_carver->show_energy("energy");
+    seam_carver->show_energy("energy");
     //vector<int> seam=seam_carver->get_vertical_seam();seam_carver->show_vertical_seam(seam);
     for (int i=img.cols*0.2;i>0;i--) {
         if (i%10==0) cout<<i<<endl;
         vector<int> seam=seam_carver->get_vertical_seam();
         seam_carver->remove_vertical_seam(seam);
-        if (i==215) {
-            seam_carver->show_image("half image");
-            seam_carver->show_record("half record image");
-            seam_carver->show_energy("half energy");
-            vector<int> seam=seam_carver->get_vertical_seam();seam_carver->show_vertical_seam(seam);
-        }
     }
     for (int i=img.rows*0.2;i>0;i--) {
         if (i%10==0) cout<<i<<endl;
