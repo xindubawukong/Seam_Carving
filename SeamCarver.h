@@ -20,7 +20,8 @@ private:
     Mat img,img0;
     Mat E;
     pair<int,int> record[5000][5000];
-    int f[5000][5000],from[5000][5000];
+    double f[5000][5000];
+    int from[5000][5000];
 
 public:
 
