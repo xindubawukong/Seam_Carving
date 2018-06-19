@@ -26,7 +26,7 @@ int main() {
         if (i%10==0) cout<<i<<endl;
         vector<int> seam=seam_carver->get_vertical_seam();
         seam_carver->remove_vertical_seam(seam);
-        if (i==210) {
+        if (i==215) {
             seam_carver->show_image("half image");
             seam_carver->show_record("half record image");
             seam_carver->show_energy("half energy");
